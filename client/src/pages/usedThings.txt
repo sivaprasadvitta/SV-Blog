@@ -6,4 +6,9 @@ Build websites even faster with components on top of Tailwind CSS
 
 api folder contains the index.js --server 
 models which is rules set that users cant have access some parts of the database 
-ex:crate username and password 
+ex:crate username and password
+model contians the schema of the data bases
+////
+routes is used to create the api routes and export to where every express server wants
+///
+controller- contains the logic of the route
