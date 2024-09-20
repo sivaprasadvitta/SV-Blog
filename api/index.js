@@ -19,11 +19,25 @@ mongoose.connect(process.env.MONGO).then(()=>{
     console.log(err);
 })
 
+
+//routes
 app.use('/api/user',userRouter);
     //response is sending the data
     //sending the data to page
 
 app.use('/api/auth',authRoutes);
+
+
+//creating middleware
+app.use((err,req,res,next)=>{
+    const statusCode =err.statusCode || 500;
+    const message = err.message || "Internal Server error";
+    res.status(statusCode).json({
+        success : false,
+        statusCode,
+        message
+    })
+})
 
 
 app.listen(port,()=>{
