@@ -7,5 +7,5 @@ const router =express.Router();
 //     res.json({message:'API is working'});
 // }
 
-router.get('/',test);
+router.get('/test',test);
 export default router;

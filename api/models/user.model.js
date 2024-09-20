@@ -8,11 +8,11 @@ import mongoose from "mongoose";
         unique:true,
     },
     email :{
-        type:string,
+        type:String,
         request:true,
     },
     password :{
-        type:string,
+        type:String,
         request:true,
     }
  },
