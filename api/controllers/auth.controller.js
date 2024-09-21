@@ -54,7 +54,7 @@ export const signin = async (req, res, next) => {
         // Compare the password
         const validPassword = bcryptjs.compareSync(password, validUser.password);
         if (!validPassword) {
-            return next(errorHandler(400, "Invalid password"));
+            return next(errorHandler(400, "Invalid Password"));
         }
 
         // Generate JWT token
