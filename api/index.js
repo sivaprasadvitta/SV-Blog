@@ -3,13 +3,16 @@ import mongoose from 'mongoose'
 import userRouter from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js'
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
 
-const app = express();
-const port =3000;
 
+const app = express();
+const port =4000;
+
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json())
 
 //key connection to db
