@@ -12,3 +12,30 @@ model contians the schema of the data bases
 routes is used to create the api routes and export to where every express server wants
 ///
 controller- contains the logic of the route
+///
+creatation of redux and slice
+
+npm install @reduxjs/toolkit react-redux
+
+1.create src/redux/store.js file paste the code
+
+import { configureStore } from '@reduxjs/toolkit'
+
+export const store = configureStore({
+  reducer: {},
+})
+
+2.import store and Provider in app and bind the provider with store
+3.create redux/userSlice.js file and create initial state userSlice
+
+const userSilce = createSlice({
+    name:user,
+    intialState,
+    reducres:{
+        start
+        between
+        end
+    }
+})
+export {start,between,end} =userSilce.actions
+export defalt userSlice.reducer

@@ -3,13 +3,20 @@ import { useState } from 'react';
 import { Link,useNavigate } from "react-router-dom";
 import { Navbar, TextInput, Button, Label, Alert, Spinner } from "flowbite-react";
 
+//redux
+import {useDispatch,useSelector } from 'react-redux';
+import { signInStart,signInFailure, signInSuccess } from '../redux/user/userSlice';
 
 function SignIn() {
 
   const [formData, setFormData] = useState({});
-  const [errorMessage,setErroMessage] = useState(null);
-  const [loading,setLodaing] = useState(false);
+  // const [errorMessage,setErroMessage] = useState(null);
+  // const [loading,setLodaing] = useState(false);
+  const {loading,error:errorMessage} = useSelector((state)=>state.user); //state is global state so using useSelector we get it
+
   const navigate = useNavigate();
+
+  const dispatch =useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value .trim()});
@@ -20,12 +27,14 @@ function SignIn() {
     console.log(formData.password);
 
     if(!formData.email || !formData.password){
-      return setErroMessage('please fill all fields');
+      // return setErroMessage('please fill all fields');
+      return dispatch(signInFailure('please fill all deatils'));
     }
 
     try {
-      setLodaing(true);
-      setErroMessage(null);
+      // setLodaing(true);
+      // setErroMessage(null);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -35,16 +44,18 @@ function SignIn() {
       const data = await res.json();
       console.log(res);
       if(data.success === false){
-        return setErroMessage(data.message); 
+        // return setErroMessage(data.message); 
+        dispatch(signInFailure(data.message));
       }
 
-      setLodaing(false);
       if(res.ok){
+        dispatch(signInSuccess(data));
         navigate('/');
       }
     } catch (error) {
-      setErroMessage(error.message);
-      setLodaing(false);
+      // setErroMessage(error.message);
+      // setLodaing(false);
+      dispatch(signInFailure(error.message));
     }
   }
 
@@ -84,7 +95,7 @@ function SignIn() {
                     <span className="pl-3">loading..</span>
                     {setLodaing(false)}
                   </>
-                ): 'Sign Ip'
+                ): 'Sign In'
               }
             </Button>
           </form>
