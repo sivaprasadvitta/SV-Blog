@@ -8,9 +8,8 @@ import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
 import Header from './components/Header'
 import Footer from './components/Footer'
-//redux
-// import {store} from './redux/store.js'
-import {Provider} from 'react-redux'
+
+import PrivateRoute from './components/PrivateRoute'
 
 import InfiniteScrollComponent from './pages/InifiniteScrolling.jsx'
 
@@ -23,7 +22,9 @@ function App() {
         <Route path='/about' element = {<About/>} />
         <Route path='/sign-in' element = {<SignIn/>} />
         <Route path='/sign-up' element = {<SignUp/>} />
-        <Route path='/dashboard' element = {<Dashboard/>} />
+        <Route element = {<PrivateRoute/>}> 
+          <Route path='/dashboard' element = {<Dashboard/>} />
+        </Route>
         <Route path='/projects' element = {<Projects/>} />
         <Route path='/scroll' element = {<InfiniteScrollComponent/>}/>
       </Routes>
