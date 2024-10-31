@@ -21,9 +21,6 @@ function OAuth() {
 
     try {
       const resultFromGoogle = await signInWithPopup(auth, provider);
-      console.log(resultFromGoogle.user.displayName);
-      console.log(resultFromGoogle.user.email);
-      console.log(resultFromGoogle.user.photoURL);
 
       // TODO: Add logic to save user to database
 
