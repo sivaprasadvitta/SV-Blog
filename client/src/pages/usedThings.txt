@@ -39,3 +39,10 @@ const userSilce = createSlice({
 })
 export {start,between,end} =userSilce.actions
 export defalt userSlice.reducer
+
+redux persist used to store the user session alive until it expires in local storage
+with out persist if in case we refreshes the page then user login will gone
+
+npm i redux-persist
+
+1.we no one reducer 

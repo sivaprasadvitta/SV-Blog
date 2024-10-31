@@ -1,12 +1,12 @@
 
 import express from 'express';
-import {signup,signin} from '../controllers/auth.controller.js';
+import {signup,signin,googleAuth} from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
 
-// Define your route
+// Define route
 router.post('/signup', signup);
 router.post('/signin',signin);
-
+router.post('/google',googleAuth);
 export default router;

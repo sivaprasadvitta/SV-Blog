@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link,useNavigate } from "react-router-dom";
 import { Navbar, TextInput, Button, Label, Alert, Spinner } from "flowbite-react";
+import OAuth from "../components/OAuth";
 
 //redux
 import {useDispatch,useSelector } from 'react-redux';
@@ -98,12 +99,14 @@ function SignIn() {
                 ): 'Sign In'
               }
             </Button>
+            <OAuth />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Dont Have an Account?</span>
             <Link to='/sign-up' className="text-blue-500">
               Sign Up
             </Link>
+            
 
             <div>
               {

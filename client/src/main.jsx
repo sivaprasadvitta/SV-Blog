@@ -4,11 +4,15 @@ import App from './App.jsx'
 import './index.css'
 
 //import redux
-import store  from './redux/store'
+import { store,persistor } from './redux/store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
+  // even though 
+  <PersistGate persistor={persistor}> 
+    <Provider store={store}>
     <App />
   </Provider>
+  </PersistGate>
 )
